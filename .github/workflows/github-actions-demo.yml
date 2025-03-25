@@ -26,8 +26,8 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '23'
-          distribution: 'termurin'
-          architecture: x64
+          distribution: 'temurin'
+          architecture: 'x64'
 
       - name: Build all modules
         run: mvn --batch-mode --update-snapshots verify
