@@ -1,0 +1,134 @@
+openapi: 3.0.1
+info:
+  title: Accounts microservices REST API documentation.
+  description: BaopenBank Accounts microservice REST API Documentation.
+  version: 1.0.0
+  contact:
+    name: Bao Tran
+    email: baotranquoc@gmail.com
+    url: https://baopenbank.com
+  license:
+    name: Apache 2.0
+    url: https://baopenbank.com
+
+paths:
+  /api/account:
+    post:
+      summary: Create Account REST API
+      description: REST API to create new Account & Customer inside Baopenbank
+      responses:
+        201:
+          description: HTTP Status CREATED
+
+
+  /api/customer:
+    get:
+      summary: Retrieve Account REST API
+      description: REST API to retrieve new Account & Customer inside Baopenbank
+      parameters:
+        - name: email
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: HTTP Status OK
+
+
+    put:
+      summary: Update Account REST API
+      description: REST API to update new Account & Customer inside Baopenbank
+      responses:
+        200:
+          description: HTTP Status OK
+
+
+    delete:
+      summary: Delete Customer REST API
+      description: REST API to delete an Account & Customer inside Baopenbank
+      parameters:
+        - name: mobileNumber
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: HTTP Status OK
+        417:
+          description: HTTP Status Exception Failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+
+
+components:
+  schemas:
+    Account:
+      description: Schema to hold Account information
+      type: object
+      properties:
+        account_number:
+          type: string
+          description: Account number of account
+          example: "1987654321"
+        account_type:
+          type: string
+          description: Type of account
+          example: "SAVINGS"
+        branch_address:
+          type: string
+          description: Branch address of account
+          example: "Hanoi"
+
+    Customer:
+      description: Schema to hold Customer information
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of customer
+          example: "Bao Tran"
+        email:
+          type: string
+          description: Email of customer
+          example: "baotranquoc@gmail.com"
+        mobile_phone:
+          type: string
+          description: Phone number of customer
+          example: "0987654321"
+        account:
+          $ref: "#/components/schemas/Account"
+
+
+    ErrorResponse:
+      description: Scheme to hold errorResponse information
+      type: object
+      properties:
+        apiPath:
+          type: string
+          description: API path invoked by client
+        errorCode:
+          type: string
+          description: Error code representing the error happened
+        errorMessage:
+          type: string
+          description: Error message representing the error details
+        timestamp:
+          type: string
+          description: Timestamp representing when the request is invoked
+          format: date-time
+
+
+
+    ResponseDetails:
+      description: Schema to hold successfully response information
+      type: object
+      properties:
+        statusCode:
+          type: string
+        statusMessage:
+          type: string

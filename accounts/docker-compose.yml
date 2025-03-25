@@ -1,0 +1,44 @@
+version: "1.0"
+
+services:
+  accounts:
+    image: "baopen753/accounts-service"
+    container_name: accounts-ms
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - baopen753
+
+  loans:
+    image: "baopen753/loans-service"
+    container_name: loans-ms
+    ports:
+      - "8090:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - baopen753
+
+  cards:
+    image: "baopen753/cards-service"
+    container_name: "cards-ms"
+    ports:
+      - "9000:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - baopen753
+
+
+networks:
+  baopen753:
+    driver: "bridge"
+
