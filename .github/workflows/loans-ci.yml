@@ -1,0 +1,40 @@
+name: CI pipeline for accounts servie
+
+ # define github action events:  define when to run
+on: 
+  push:
+    branches: ["main"]
+    paths:
+    - 'loans/**'
+
+  pull_request:
+    branches: ["main"]
+    paths: 
+    - 'loans/**'
+
+  # this allow you to trigger the workflow manually
+  workflow_dispatch:
+
+
+
+
+# define github action jobs: define what to do
+jobs:
+  build:
+  # define github actions runner: define where to run
+    runs-on: ubuntu-lastest
+
+  # define sequence of tasks as part of the job
+    steps:
+      - name: Checkout repo code
+        uses: actions/checkout@v4
+
+      - name: specify jdk
+        uses: actions/setup-java@v4
+        with:
+          version: "23"
+          distributrion: "temurin"
+          architecture: "x64"
+
+      - name: build the servce
+        run: mvn --batch-mode  --update-snapshots verify
