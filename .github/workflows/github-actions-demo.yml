@@ -20,7 +20,7 @@ jobs:
     # define sequence of tasks as part of job
     steps:
       - name: Check out repository code
-        uses: actions/checkout@4
+        uses: actions/checkout@v4
 
       - name: specify jdk version
         uses: actions/setup-java@v4
