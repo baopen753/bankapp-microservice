@@ -1,6 +1,6 @@
 name: CI pipeline for accounts servie
 
- # define github action events:  define when to run
+ # define GitHub action events:  define when to run
 on: 
   push:
     branches: ["main"]
@@ -12,16 +12,16 @@ on:
     paths: 
     - 'loans/**'
 
-  # this allow you to trigger the workflow manually
+  # this allows you to trigger the workflow manually
   workflow_dispatch:
 
 
 
 
-# define github action jobs: define what to do
+# define GitHub action jobs: define what to do
 jobs:
   build:
-  # define github actions runner: define where to run
+  # define GitHub actions runner: define where to run
     runs-on: ubuntu-latest
 
   # define sequence of tasks as part of the job
@@ -36,5 +36,7 @@ jobs:
           distribution: "temurin"
           architecture: "x64"
 
-      - name: build the servce
+      - name: build the service
         run: mvn --batch-mode  --update-snapshots verify
+        working-directory: ./loans
+
