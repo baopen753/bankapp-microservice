@@ -22,7 +22,7 @@ on:
 jobs:
   build:
   # define github actions runner: define where to run
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
 
   # define sequence of tasks as part of the job
     steps:
@@ -32,9 +32,9 @@ jobs:
       - name: specify jdk
         uses: actions/setup-java@v4
         with:
-          version: "23"
-          distributrion: "temurin"
+          java-version: "23"
+          distribution: "temurin"
           architecture: "x64"
 
-      - name: build the servce
+      - name: build the service
         run: mvn --batch-mode  --update-snapshots verify
