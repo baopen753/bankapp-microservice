@@ -1,0 +1,164 @@
+openapi: 3.0.3
+info:
+  title: Cards microservices REST API documentation
+  description: BaopenBank cards microservice REST API Documentation
+  version: 1.0.0
+  contact:
+    name: Bao Tran
+    email: baopen@gmail.com
+    url: https://baopenbank.com
+  license:
+    name: Apache 2.0
+    url: https://baopenbank.com
+
+
+paths:
+  /api/cards:
+    get:
+      summary: Retrieve Cards REST API
+      description: REST API to retrieve new Cards inside Baopenbank
+      parameters:
+        - name: mobileNumber
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: HTTP Status 200
+        404:
+          description: HTTP Status 400 - Not Found Cards with given input mobileNumber
+
+
+    post:
+      summary: Create Cards REST API
+      description: REST API to create a new Cards inside Baopenbank
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Card"
+      responses:
+        "201":
+          description: Card account created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Card"
+        "400":
+          description: Bad request due to validation errors
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+
+    put:
+      summary: Update Card REST API
+      description: REST API to update new Card inside Baopenbank
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Card"
+      responses:
+        "200":
+          description: Card updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Card"
+        "417":
+          description: Exception failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+
+
+    delete:
+      summary: Delete Card REST API
+      description: REST API to delete an Card Account inside Baopenbank
+      parameters:
+        - name: mobileNumber
+          in: query
+          required: true
+          schema:
+            type: string
+            example: 0987654321
+      responses:
+        200:
+          description: HTTP Status OK
+        417:
+          description: HTTP Status Exception Failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+
+
+components:
+  schemas:
+    Card:
+      description: Schema to hold Card information
+      type: object
+      properties:
+        mobile_number:
+          type: string
+          description: Mobile number of Card
+          example: 0987654321
+        card_number:
+          type: string
+          description: Card number of Card
+          example: 100320245735
+        card_type:
+          type: string
+          description: Type of Card
+          example: "CREDIT CARD"
+        total_limit:
+          type: integer
+          description: Total limit of Card
+          example: 10001
+        amount_used:
+          type: number
+          description:  Amount used of Card
+          example: 10000
+        available_amount:
+          type: number
+          description: Available amount of Card
+          example: 10000
+
+
+    ErrorResponse:
+      description: Scheme to hold errorResponse information
+      type: object
+      properties:
+        apiPath:
+          type: string
+          description: API Path invoked by client
+        errorCode:
+          type: string
+          description: Error code representing the error Code
+        errorMessage:
+          type: string
+          description: Error message representing the error details
+        timeStamp:
+          type: string
+          description: Timestamp representing when the request is invoked
+          format: date-time
+
+
+    ResponseDetails:
+      description: Scheme to hole response details
+      type: object
+      properties:
+        statusCode:
+          type: string
+        statusMessage:
+          type: string
+
+  
