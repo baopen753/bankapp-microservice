@@ -13,14 +13,13 @@ spring:
       enabled: true
 
   jpa:
-    show-sql: true
     hibernate:
       ddl-auto: update
-  
+    show-sql: true
+
   config:
-    import:
-      - "application-prod.yml"
-      - "application-test.yml"
+    activate:
+      on-profile: "prod"
 
 springdoc:
   api-docs:
