@@ -8,7 +8,7 @@ build:
   version: "1.0"
 
 accounts:
-  message: "Welcome to accounts service default configuration test APIs "
+  message: "Welcome to accounts service test configuration test APIs "
   contactDetails:
     name: "Bao Pen - Developer"
     email: "baopena@gmail.com"
