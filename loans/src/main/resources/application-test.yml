@@ -1,25 +1,20 @@
 spring:
-  application:
-    name: ${APP_NAME:loans}
-
-  datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: sa
-
-  h2:
-    console:
-      enabled: true
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-
   config:
     activate:
       on-profile: "test"
+
+build:
+  version: "1.0"
+
+loans:
+  message: "Welcome to loans service test configuration local APIs "
+  contactDetails:
+    name: "Bao Pen - Developer"
+    email: "baopena@gmail.com"
+  calls:
+    - (555) 555-1234
+    - (555) 523-1345
+
 
 springdoc:
   api-docs:

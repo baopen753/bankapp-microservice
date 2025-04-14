@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.baopen753.loans.constant.LoanConstant;
+import org.baopen753.loans.dto.LoanDetailDto;
 import org.baopen753.loans.dto.LoanDto;
 import org.baopen753.loans.dto.ResponseDto;
 import org.baopen753.loans.service.ILoanService;
@@ -15,11 +16,17 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
-@RequiredArgsConstructor
 @Validated
 public class LoanController {
 
     private final ILoanService loanService;
+    private final LoanDetailDto loanDetailDto;
+
+    public LoanController(ILoanService loanService, LoanDetailDto loanDetailDto) {
+        this.loanService = loanService;
+        this.loanDetailDto = loanDetailDto;
+    }
+
 
     @PostMapping("/loans")
     public ResponseEntity<LoanDto> createLoanAccount(@RequestParam
@@ -63,5 +70,11 @@ public class LoanController {
         return ResponseEntity
                 .status(HttpStatus.EXPECTATION_FAILED)
                 .body(new ResponseDto(LoanConstant.STATUS_417, LoanConstant.MESSAGE_417_DELETE));
+    }
+
+
+    @GetMapping("/loan-info")
+    public ResponseEntity<LoanDetailDto> fetchLoanAccountInfo() {
+        return ResponseEntity.ok(loanDetailDto);
     }
 }
