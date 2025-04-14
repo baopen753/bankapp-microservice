@@ -1,23 +1,29 @@
 package org.baopen753.cards.controller;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.baopen753.cards.constant.CardConstant;
+import org.baopen753.cards.dto.CardDetailsDto;
 import org.baopen753.cards.dto.CardDto;
 import org.baopen753.cards.dto.ResponseDto;
 import org.baopen753.cards.service.ICardService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
-@RequiredArgsConstructor
+@RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 @Validated
 public class CardController {
 
     private final ICardService cardService;
+    private final CardDetailsDto cardDetailsDto;
+
+   public CardController(ICardService cardService, CardDetailsDto cardDetailsDto) {
+       this.cardService = cardService;
+       this.cardDetailsDto = cardDetailsDto;
+   }
 
     @PostMapping("/cards")
     public ResponseEntity<CardDto> createCard(@RequestParam String mobileNumber) {
@@ -67,5 +73,9 @@ public class CardController {
                 .body(new ResponseDto(CardConstant.STATUS_417, CardConstant.MESSAGE_417_DELETE));
     }
 
+    @GetMapping("/card-info")
+    public ResponseEntity<CardDetailsDto> getCardInfo() {
+        return ResponseEntity.ok(cardDetailsDto);
+    }
 
 }

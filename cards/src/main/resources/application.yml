@@ -16,21 +16,25 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-  
+
+  profiles:
+    active:
+      - "default"
+
   config:
     import:
       - "application-prod.yml"
       - "application-test.yml"
-  
+
   build:
     version: "3.0"
 
-  accounts:
-    message: "Welcome to cards service default configuration local APIs "
-    contactDetails:
+cards:
+  message: "Welcome to cards service default configuration local APIs "
+  contactDetails:
       name: "Bao Pen - Developer"
       email: "baopena@gmail.com"
-    calls:
+  calls:
       - (555) 555-1234
       - (555) 523-1345
 
@@ -40,8 +44,3 @@ springdoc:
   swagger-ui:
     enabled: true
     url: /openapi.yml
-
-
-
-    
-  
