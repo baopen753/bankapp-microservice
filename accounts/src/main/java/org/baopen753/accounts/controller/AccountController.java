@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @Validated              // tells spring boot to perform validation on all REST APIs
 public class AccountController {
 
-    
+
     private final IAccountService accountService;
     private final ICustomerService customerService;
     private AccountDetailsDto accountDetailsDto;
@@ -74,7 +74,7 @@ public class AccountController {
     }
 
     @GetMapping("/account-info")
-    public ResponseEntity<AccountDetailsDto> getAccountInfo(){
+    public ResponseEntity<AccountDetailsDto> getAccountInfo() {
         return ResponseEntity.ok(accountDetailsDto);
     }
 }
