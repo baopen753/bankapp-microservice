@@ -1,29 +1,17 @@
 spring:
-  application:
-    name: ${APP_NAME:accounts}
-
-  datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: sa
-
-  h2:
-    console:
-      enabled: true
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-
   config:
     activate:
       on-profile: "test"
 
-springdoc:
-  api-docs:
-    enabled: true
-  swagger-ui:
-    enabled: true
-    url: /openapi.yml
+
+build:
+  version: "1.0"
+
+accounts:
+  message: "Welcome to accounts service test configuration test APIs "
+  contactDetails:
+    name: "Bao Pen - Developer"
+    email: "baopena@gmail.com"
+  calls:
+    - (555) 555-1234
+    - (555) 523-1345

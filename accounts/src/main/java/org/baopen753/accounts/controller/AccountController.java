@@ -2,8 +2,8 @@ package org.baopen753.accounts.controller;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
 import org.baopen753.accounts.constant.AccountConstant;
+import org.baopen753.accounts.dto.AccountDetailsDto;
 import org.baopen753.accounts.dto.CustomerDto;
 import org.baopen753.accounts.dto.ResponseDto;
 import org.baopen753.accounts.service.IAccountService;
@@ -17,13 +17,20 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
-@AllArgsConstructor
 @Validated              // tells spring boot to perform validation on all REST APIs
 public class AccountController {
 
-
+    
     private final IAccountService accountService;
     private final ICustomerService customerService;
+    private AccountDetailsDto accountDetailsDto;
+
+
+    public AccountController(IAccountService accountService, ICustomerService customerService, AccountDetailsDto accountDetailsDto) {
+        this.accountService = accountService;
+        this.customerService = customerService;
+        this.accountDetailsDto = accountDetailsDto;
+    }
 
 
     @PostMapping("/account")
@@ -55,7 +62,6 @@ public class AccountController {
     }
 
 
-
     @DeleteMapping("/customer")
     public ResponseEntity<ResponseDto> deleteCustomerInfo(@RequestParam
                                                           @Pattern(regexp = "(^$[0-9]{10})", message = "Mobile number should be 10 digits")
@@ -65,5 +71,10 @@ public class AccountController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(new ResponseDto(AccountConstant.STATUS_200, AccountConstant.MESSAGE_200));
+    }
+
+    @GetMapping("/account-info")
+    public ResponseEntity<AccountDetailsDto> getAccountInfo(){
+        return ResponseEntity.ok(accountDetailsDto);
     }
 }

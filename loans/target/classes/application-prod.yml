@@ -1,0 +1,23 @@
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+
+build:
+    version: "2.0"
+
+loans:
+  message: "Welcome to loans service product configuration local APIs "
+  contactDetails:
+    name: "Bao Pen - Developer"
+    email: "baopena@gmail.com"
+  calls:
+    - (555) 555-1234
+    - (555) 523-1345
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    url: /openapi.yml

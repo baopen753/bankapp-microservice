@@ -22,6 +22,21 @@ spring:
       - "application-prod.yml"
       - "application-test.yml"
 
+  profiles:
+    active: "default"
+
+  build:
+    version: "3.0"
+
+loans:
+  message: "Welcome to loans service default configuration local APIs "
+  contactDetails:
+    name: "Bao Pen - Developer"
+    email: "baopena@gmail.com"
+  calls:
+    - (555) 555-1234
+    - (555) 523-1345
+
 springdoc:
   api-docs:
     enabled: true
