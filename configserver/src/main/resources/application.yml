@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: configserver
+
+server:
+  port: 8071
+
+

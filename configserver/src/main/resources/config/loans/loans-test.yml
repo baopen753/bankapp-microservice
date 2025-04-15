@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+loans:
+  message: "Welcome to loans service test configuration local APIs "
+  contactDetails:
+    name: "Bao Pen - Developer"
+    email: "baopena@gmail.com"
+  calls:
+    - (555) 555-1234
+    - (555) 523-1345
