@@ -1,4 +1,6 @@
-/target
+loans/target/
+cards/target/
+accounts/target/
 *.log
 .idea/
 *.iml
