@@ -1,4 +1,4 @@
-name: CI pipeline for accounts servie
+name: CI pipeline for loans servie
 
  # define GitHub action events:  define when to run
 on: 
