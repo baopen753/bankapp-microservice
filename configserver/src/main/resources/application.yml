@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: configserver
+  profiles:
+    active: native                # tell the server to read config files from the local file system or classpath
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: "classpath:/config"     # tell spring cloud config where our properties are stored
+
+server:
+  port: 8071

@@ -1,6 +1,8 @@
 spring:
   application:
     name: ${APP_NAME:cards}
+  profiles:
+    active: "prod"
 
   datasource:
     url: jdbc:h2:mem:testdb
@@ -16,31 +18,5 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-
-  profiles:
-    active:
-      - "default"
-
   config:
-    import:
-      - "application-prod.yml"
-      - "application-test.yml"
-
-  build:
-    version: "3.0"
-
-cards:
-  message: "Welcome to cards service default configuration local APIs "
-  contactDetails:
-      name: "Bao Pen - Developer"
-      email: "baopena@gmail.com"
-  calls:
-      - (555) 555-1234
-      - (555) 523-1345
-
-springdoc:
-  api-docs:
-    enabled: true
-  swagger-ui:
-    enabled: true
-    url: /openapi.yml
+    import: "optional:configserver:http://localhost:8071"
