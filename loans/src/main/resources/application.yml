@@ -3,21 +3,23 @@ spring:
     name: ${APP_NAME:loans}
   profiles:
     active: "prod"
-
   datasource:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
     username: sa
     password: sa
-
   h2:
     console:
       enabled: true
-
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
-
   config:
     import: "optional:configserver:http://localhost:8071"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
