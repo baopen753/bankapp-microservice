@@ -6,5 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 
 @ConfigurationProperties(prefix = "loans")
-public record LoanDetailDto(String message, HashMap<String, String> contactDetails, List<String> calls) {
+public class LoanDetailDto {
+    private String message;
+    private HashMap<String, String> contactDetails;
+    private List<String> calls;
 }
