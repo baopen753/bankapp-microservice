@@ -14,17 +14,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 @RequestMapping(path = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 @Validated              // tells spring boot to perform validation on all REST APIs
 public class AccountController {
 
-
     private final IAccountService accountService;
     private final ICustomerService customerService;
     private AccountDetailsDto accountDetailsDto;
-
 
     public AccountController(IAccountService accountService, ICustomerService customerService, AccountDetailsDto accountDetailsDto) {
         this.accountService = accountService;
@@ -32,17 +29,15 @@ public class AccountController {
         this.accountDetailsDto = accountDetailsDto;
     }
 
-
     @PostMapping("/account")
     public ResponseEntity<ResponseDto> createAccount(@Valid @RequestBody CustomerDto customerDto) {
 
         accountService.createAccount(customerDto);
-
+        
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(new ResponseDto(AccountConstant.STATUS_200, AccountConstant.MESSAGE_200));
     }
-
 
     @GetMapping("/customer")
     public ResponseEntity<CustomerDto> getCustomerInfo(@RequestParam String email) {
@@ -52,7 +47,6 @@ public class AccountController {
                 .body(customerDto);
     }
 
-
     @PutMapping("/customer")
     public ResponseEntity<CustomerDto> updateCustomerInfo(@Valid @RequestBody CustomerDto customerDto) {
         CustomerDto updatedCustomer = accountService.updateAccount(customerDto);
@@ -60,7 +54,6 @@ public class AccountController {
                 .status(HttpStatus.OK)
                 .body(updatedCustomer);
     }
-
 
     @DeleteMapping("/customer")
     public ResponseEntity<ResponseDto> deleteCustomerInfo(@RequestParam

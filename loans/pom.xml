@@ -103,7 +103,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>baopen753/${artifactId}</name>
+						<name>baopen753/${project.artifactId}</name>
 					</image>
 				</configuration>
 			</plugin>

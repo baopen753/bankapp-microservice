@@ -2,12 +2,38 @@ spring:
   application:
     name: configserver
   profiles:
-    active: native                # tell the server to read config files from the local file system or classpath
+    active: git
+  #active: native                # tell the server to read config files from the local file system or classpath
   cloud:
     config:
       server:
-        native:
-          search-locations: "classpath:/config"     # tell spring cloud config where our properties are stored
+        git:
+          uri: "https://github.com/baopen753/microservices-config-files"
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+
+          #native:
+          #search-locations: "file:///home/baopen/Documents/config" # local system file
+          #search-locations: "classpath:/config"     # tell spring cloud config where our properties are stored
+
+rabbitmq:
+  host: "localhost"
+  port: 5672
+  username: "guest"
+  password: "guest"
+
+encrypt:
+  key: "YN2N34N23N4J23NU5N4792J45H234J2396H921J49H125"
 
 server:
   port: 8071
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "refresh"
+          - "busrefresh"
