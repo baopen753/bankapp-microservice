@@ -6,22 +6,14 @@ spring:
     name: ${APP_NAME:cards}
   profiles:
     active: "prod"
-
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: sa
-
-  h2:
-    console:
-      enabled: true
-
+    url: jdbc:mysql://localhost:3308/cardsdb
+    username: root
+    password: root
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-
   config:
     import: "optional:configserver:http://localhost:8071"
 
