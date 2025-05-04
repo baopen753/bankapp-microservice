@@ -6,7 +6,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.2</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.baopen753</groupId>
     <artifactId>cards</artifactId>
@@ -103,7 +102,7 @@
                 <version>3.4.4</version>
                 <configuration>
                     <to>
-                        <image>baopen753/S{artifactId}</image>
+                        <image>baopen753/${project.artifactId}</image>
                     </to>
                 </configuration>
             </plugin>
