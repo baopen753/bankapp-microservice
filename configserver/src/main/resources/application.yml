@@ -17,11 +17,11 @@ spring:
           #native:
           #search-locations: "file:///home/baopen/Documents/config" # local system file
           #search-locations: "classpath:/config"     # tell spring cloud config where our properties are stored
-#  rabbitmq:
-#    host: "localhost"
-#    port: 5672
-#    username: "guest"
-#    password: "guest"
+  rabbitmq:
+   host: "localhost"
+   port: 5672
+   username: "guest"
+   password: "guest"
 
 
 encrypt:
