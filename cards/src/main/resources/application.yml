@@ -3,31 +3,18 @@ spring:
     name: ${APP_NAME:cards}
   profiles:
     active: "prod"
-  # datasource:
-  #   url: jdbc:mysql://localhost:3308/cardsdb
-  #   username: root
-  #   password: root
-  # jpa:
-  #   hibernate:
-  #     ddl-auto: update
-  #   show-sql: true
-  # sql:
-  #   init:
-  #     mode: always
-
   datasource:
-    url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
-    username: sa
-    password: ''
-  h2:
-    console:
-      enabled: true
+    url: jdbc:mysql://localhost:3306/cardsdb
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
     show-sql: true
+  sql:
+    init:
+      mode: always   # Spring Boot always execute SQL initialization scripts at resources forlder
   config:
     import: "optional:configserver:http://localhost:8071"
 
