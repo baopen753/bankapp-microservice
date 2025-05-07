@@ -76,7 +76,7 @@
 				<version>3.4.4</version>
 				<configuration>
 					<to>
-						<image>baopen753/${project.artifactId}:s6</image>
+						<image>baopen753/${project.artifactId}:s7</image>
 					</to>
 				</configuration>
 			</plugin>
