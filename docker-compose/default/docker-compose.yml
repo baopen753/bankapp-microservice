@@ -49,7 +49,7 @@ services:
       service: microservice-db-config
 
   configserver:
-    image: "baopen753/configserver:s6"
+    image: "baopen753/configserver:s7"
     container_name: configserver
     ports:
       - "8071:8071"
@@ -67,7 +67,7 @@ services:
       service: microservice-base-config
 
   accounts:
-    image: "baopen753/accounts-service:s6"
+    image: "baopen753/accounts-service:s7"
     container_name: accounts-ms
     ports:
       - "8080:8080"
@@ -85,7 +85,7 @@ services:
       service: microservice-configserver-config
 
   cards:
-    image: "baopen753/cards-service:s6"
+    image: "baopen753/cards-service:s7"
     container_name: "cards-ms"
     ports:
       - "8081:8080"
@@ -104,7 +104,7 @@ services:
       service: microservice-configserver-config
 
   loans:
-    image: "baopen753/loans-service:s6"
+    image: "baopen753/loans-service:s7"
     container_name: loans-ms
     ports:
       - "8082:8080"
