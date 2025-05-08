@@ -67,7 +67,7 @@ services:
       service: microservice-base-config
 
   accounts:
-    image: "baopen753/accounts-service:s7"
+    image: "baopen753/accounts-ms:s7"
     container_name: accounts-ms
     ports:
       - "8080:8080"
@@ -85,7 +85,7 @@ services:
       service: microservice-configserver-config
 
   cards:
-    image: "baopen753/cards-service:s7"
+    image: "baopen753/cards-ms:s7"
     container_name: "cards-ms"
     ports:
       - "8081:8080"
@@ -97,14 +97,14 @@ services:
         condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "cards"
-      SPRING_DATASOURCE_URL: jdbc:mysql://cardsdb:3307/cardsdb
+      SPRING_DATASOURCE_URL: jdbc:mysql://cardsdb:3306/cardsdb
 
     extends:
       file: common-config.yml
       service: microservice-configserver-config
 
   loans:
-    image: "baopen753/loans-service:s7"
+    image: "baopen753/loans-ms:s7"
     container_name: loans-ms
     ports:
       - "8082:8080"
@@ -116,7 +116,7 @@ services:
         condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "loans"
-      SPRING_DATASOURCE_URL: jdbc:mysql://loansdb:3308/loansdb
+      SPRING_DATASOURCE_URL: jdbc:mysql://loansdb:3306/loansdb
 
     extends:
       file: common-config.yml
