@@ -8,13 +8,13 @@
         <version>3.4.2</version>
     </parent>
     <groupId>org.baopen753</groupId>
-    <artifactId>cards</artifactId>
+    <artifactId>cards-ms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>cards</name>
     <description>cards</description>
 
     <properties>
-        <java.version>23</java.version>
+        <java.version>21</java.version>
         <spring-cloud.version>2024.0.1</spring-cloud.version>
     </properties>
 
