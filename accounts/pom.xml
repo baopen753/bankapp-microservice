@@ -19,8 +19,6 @@
         <spring-cloud.version>2024.0.1</spring-cloud.version>
     </properties>
 
-  
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
