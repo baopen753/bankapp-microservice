@@ -37,5 +37,5 @@ jobs:
           architecture: "x64"
 
       - name: build the service
-        run: mvn --batch-mode  --update-snapshots verify
+        run: mvn --batch-mode  --update-snapshots verify test
         working-directory: ./accounts
